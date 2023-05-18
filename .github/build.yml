@@ -1,0 +1,46 @@
+name: Run Build
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+    - name: Install dependencies
+      working-directory: ./cgo_frontend
+      run: yarn install --frozen-lockfile
+
+    - name: Set up Go
+    - uses: actions/setup-go@v4
+      with:
+        go-version: '1.20.4'
+    - run: go version
+
+    - name: Install dependencies
+      run: go get -u golang.org/x/lint/golint
+
+    - name: Run build
+      working-directory: ./cgo_backend
+      run: go build .
+
+    - name: Run vet & lint
+      working-directory: ./cgo_backend
+      run: |
+        go vet .
+        golint .
