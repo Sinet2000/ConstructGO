@@ -21,10 +21,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
+        cache-dependency-path: './cgo_frontend/yarn.lock'
 
     - name: Install dependencies
       working-directory: ./cgo_frontend
-      run: yarn install --frozen-lockfile
+      run: yarn install
 
     - name: Set up Go
       uses: actions/setup-go@v4
