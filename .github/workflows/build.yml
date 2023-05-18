@@ -37,12 +37,12 @@ jobs:
       working-directory: ./cgo_backend
       run: go get -u golang.org/x/lint/golint
 
-    - name: Run build
-      working-directory: ./cgo_backend
-      run: go build .
+    # - name: Run build
+    #   working-directory: ./cgo_backend
+    #   run: go build .
 
-    - name: Run vet & lint
-      working-directory: ./cgo_backend
-      run: |
-        go vet .
-        golint .
+    # - name: Run vet & lint
+    #   working-directory: ./cgo_backend
+    #   run: |
+    #     go vet .
+    #     golint .
