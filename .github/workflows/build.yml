@@ -34,6 +34,7 @@ jobs:
     - run: go version
 
     - name: Install dependencies
+      working-directory: ./cgo_backend
       run: go get -u golang.org/x/lint/golint
 
     - name: Run build
