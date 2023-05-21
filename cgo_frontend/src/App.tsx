@@ -4,7 +4,7 @@ import { Typography } from 'antd';
 const { Title } = Typography;
 
 const App: React.FC = () => {
-      return (
+  return (
     <div className="App">
       <Title>Hello, World!</Title>
     </div>
