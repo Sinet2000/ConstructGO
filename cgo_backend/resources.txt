@@ -1,0 +1,10 @@
+
+go get -u github.com/gorilla/mux
+go get go.mongodb.org/mongo-driver/mongo
+go get github.com/stretchr/testify/assert
+go get github.com/stretchr/testify
+go get -u github.com/swaggo/http-swagger
+go get github.com/brianvoe/gofakeit/v6
+
+go mod tidy
+# The go mod tidy command is used to adjust the dependencies listed in the go.mod file to match the ones actually used in your project's code. It helps to clean up and organize the module's dependencies, ensuring that they are accurately reflected in the go.mod and go.sum files.
